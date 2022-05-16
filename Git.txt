@@ -1,0 +1,105 @@
+GUI (Grafic User interface) X CLI (comand line interface)
+
+Git é um CLI
+GitHub é um GUI
+============================================================
+------------------Comandos do terminal----------------------
+
+- dir(windowns) ou ls(linux) - lista os diretorioes na pasta 
+
+- cd (igual em ambos) - ir para um lugar especifico no sistema
+ 	cd + .. (cd ..) - volta um diretorio/pasta
+
+- cls(windowns) ou clear(linux) - limpa o console 
+
+- mkdir (windowns) - cria um(a) diretorio/pasta
+
+- echo (windowns) - o terminal responde o que vc digitar
+   ex: C:\workspace>echo hello
+	hello
+     pode ser utilizado para criar arquivos com conteudo
+     ex: C:\workspace>echo hello > hello.txt
+
+- del (windowns) - delete arquivos porem mantem pastas/repositorios
+- rmdir (windowns) - deleta tanto o repositorio/pastas quanto os arquivos dentro deles
+
+===========================================================
+----------------------Comando Git--------------------------
+
+--stdin = diz ao comando que vem antes que ele ira receber um string
+e não um arquivo, caso ele peça por um.
+
+git init - inicia um repositorio
+
+git add - adiciona arquivos para o commit
+
+git commit - 
+
+git config --global user.email "Email do autor"
+
+git config --global user.name Nick do autor
+
+
+
+============================================================
+-----------------Git por baixo dos panos--------------------
+
++ SHA =	A sigla SHA significa Secura Hash Algorithm (algoritimo
+de Hash seguro), é um conjunto de funções hash cripitográficas
+projetadas pela NSA (Agência de Segurança Nacional dos EUA).
+	Forma curta de representar um arquivo.
+	é deste modo que o Git diferencia arquivos e suas atualizações
+
+	exemplo: echo "ola mundo" | openssl sha1
+		 (stdin)= d9802fa01c4c1dfc4ddaf61f766d8d56ad8a8699
+		
+		openssl sha1 Git.txt
+		SHA1(Git.txt)= 2867671448e303cba832807d47cdd2bc0b418d7c
+	
+-----------------Objetos fundamentais do git---------------
+
++ BLOBS
+	Simplificando: uma referencia ao arquivo com mais alguns metadados identificadores
+	Bloco basico de composição
+
+		echo 'conteudo' | git hash-object --stdin
+		fc31e91b26cf85a55e072476de7f263c89260eb1
+
+	O objeto "Blob" traz junto metadados como: Tipo, Tamanho, uma barra contraria(\)
+	com o 0 logo em seguida e ai o contéudo
+	por isso o resultando usando o comando "openssl sha1" será diferente:
+
+		echo -e 'conteudo' | openssl sha1
+		(stdin)= 65b0d0dda479cc03cce59528e28961e498155f5c
+
+	Porém antecipando isso e colocando os metadados que o objeto Blob traz o resultado
+	será o memso:
+	
+		echo -e "blob 9\0conteudo" | openssl sha1
+		(stdin)= fc31e91b26cf85a55e072476de7f263c89260eb1
+
++ TREES
+	Simplificando: funciona como pastas de um explorador de arquivos
+
+	Responsaveis por armazenar Blobs, monta toda a estrutura
+	de onde estão todos os arquivos além de sempre apontar/possui para um Blob
+	ela tbm pode apontar para outra arvore e também tem metadados e caso
+	algo mude em um blob que está sendo apontado por ela, o sha1 dela tbm
+	irá mudar assim como o do Blob.
+
++ COMMITS
+	O Commit aponta/possui para o ultimo commit(parente) um autor e uma mensagem
+	também possuiem um "timestamp" que marca a hora em que ele foi criado, e como 
+	a Tree e a Blob, um sha1, o sha1 dela tbm irá mudar assim como o da Tree que muda com o da Blob.
+	
+
+
+
+
+
+
+
+
+
+
+

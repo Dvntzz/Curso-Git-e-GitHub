@@ -33,13 +33,11 @@ git init - inicia um repositorio
 
 git add - adiciona arquivos para o commit
 
-git commit - 
+git commit - transfere os arquivos atualizados da maquian local para o repositorio
 
 git config --global user.email "Email do autor"
 
 git config --global user.name Nick do autor
-
-
 
 ============================================================
 -----------------Git por baixo dos panos--------------------
@@ -91,7 +89,27 @@ projetadas pela NSA (Agência de Segurança Nacional dos EUA).
 	O Commit aponta/possui para o ultimo commit(parente) um autor e uma mensagem
 	também possuiem um "timestamp" que marca a hora em que ele foi criado, e como 
 	a Tree e a Blob, um sha1, o sha1 dela tbm irá mudar assim como o da Tree que muda com o da Blob.
+
+
+
+
+====GIT ORIENTADO A PULL REQUEST====
+
+
+O Que são branchs?
+
+	Branch é um bifurcação do conteudo atual da main
+	que fica salva dentro do mesmo repositorio
+	onde você pode fazer mudanças sem afetar diretamente a main
+	assim deixando trabalhos incompletos e o conteudo
+	da main em segurança. 
+
+	Branchs permitem que varias funcionalidades possam ser criadas
+	paralelamente
 	
+	
+	
+
 
 
 
